@@ -1,0 +1,47 @@
+-- local present, lualine = pcall(require, "lualine")
+-- if not present then
+--     return
+-- end
+--
+-- lualine.setup {
+--     options = {
+--         icons_enabled = true,
+--         theme = 'catppuccin',
+--         component_separators = { left = '', right = '' },
+--         section_separators = { left = '', right = '' },
+--         disabled_filetypes = {
+--             statusline = {
+--                 "help",
+--             },
+--             winbar = {
+--                 "NvimTree",
+--                 "help",
+--                 "packer",
+--                 "dapui_breakpoints",
+--                 "dapui_scopes",
+--                 "dapui_stacks",
+--                 "dapui_watches",
+--             },
+--
+--         },
+--         ignore_focus = {},
+--         always_divide_middle = true,
+--         globalstatus = false,
+--         refresh = {
+--             statusline = 1000,
+--             tabline = 1000,
+--             winbar = 1000,
+--         }
+--     },
+--     sections = {
+--         lualine_a = { 'mode' },
+--         lualine_b = { 'branch', 'diff'; },
+--         lualine_c = { 'diagnostics' },
+--         lualine_x = { 'filename', 'filetype', 'encoding' },
+--         lualine_y = { 'progress' },
+--         lualine_z = { 'location' }
+--     },
+--     inactive_sections = {},
+--     tabline = {},
+--     extensions = {}
+-- }

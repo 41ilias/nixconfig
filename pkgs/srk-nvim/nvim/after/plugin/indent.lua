@@ -1,0 +1,7 @@
+-- local ok, ibl = pcall(require, "ibl")
+-- if not ok then
+--     return
+-- end
+--
+-- -- TODO: colors?
+-- ibl.setup()
