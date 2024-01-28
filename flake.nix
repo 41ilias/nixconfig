@@ -12,7 +12,6 @@
     
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland-plugins.url = "github:hyprwm/hyprland-plugins";
-    ags.url = "github:Aylur/ags";
     
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
@@ -46,8 +45,8 @@
 
       homeConfigurations = {
         # Desktops
-        "srk@workstation" = lib.homeManagerConfiguration {
-          modules = [ ./home/srk/workstation.nix ];
+        "srk@fedora" = lib.homeManagerConfiguration {
+          modules = [ ./home/srk/fedora.nix ];
           pkgs = pkgsFor.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs; };
         };

@@ -4,7 +4,6 @@
   imports = [
     ./firefox.nix
     ./zathura.nix
-    ./kdeconnect.nix
   ];
   
   home.packages = with pkgs; [ 

@@ -2,15 +2,6 @@
 let
   hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
   plugins = inputs.hyprland-plugins.packages.${pkgs.system};
-
-  launcher = pkgs.writeShellScriptBin "hypr" ''
-    #!/${pkgs.bash}/bin/bash
-
-    export WLR_NO_HARDWARE_CURSORS=1
-    export _JAVA_AWT_WM_NONREPARENTING=1
-
-    exec ${hyprland}/bin/Hyprland
-  '';
 in
 {
   imports = [
@@ -18,8 +9,6 @@ in
     ../common/wayland-wm
     ./basic-binds.nix
   ];
-
-  home.packages = [ launcher ];
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -31,13 +20,7 @@ in
 
     settings = {
       exec-once = [
-        "ags -b hypr"
         "hyprctl setcursor Qogir 24"
-      ];
-
-      monitor = [
-        "DP-1, preferred, 1080x640, auto"
-        "DP-2, preferred, 0x0, 1, transform, 1"
       ];
 
       general = {

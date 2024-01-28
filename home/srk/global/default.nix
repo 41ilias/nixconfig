@@ -17,19 +17,8 @@
     };
   };
 
-  nix = {
-    package = lib.mkDefault pkgs.nix;
-    settings = {
-      experimental-features = [ "nix-command" "flakes" "repl-flake" ];
-      warn-dirty = false;
-    };
-  };
-
-  systemd.user.startServices = "sd-switch";
-
   programs = {
     home-manager.enable = true;
-    git.enable = true;
   };
 
   home = {
@@ -54,15 +43,11 @@
     cryptsetup
     aichat
     xdg-utils
-    kooha
     mpv
     ansible
     lsof
     remmina
-    parsec-bin
     netcat-gnu
-    discord
-    obsidian
     bottom
     # (catppuccin-kvantum.override {
     #   accent = "Mauve";
