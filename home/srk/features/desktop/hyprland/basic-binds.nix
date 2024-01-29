@@ -77,10 +77,10 @@
     ++ (lib.mapAttrsToList (key: direction: mvfocus key direction) directions)
     ++ (lib.mapAttrsToList (key: direction: swapWin key direction) directions);
 
-    # bindle = let e = "exec, ags -b hypr -r"; in [
-    #   ",XF86AudioRaiseVolume,  ${e} 'audio.speaker.volume += 0.05; indicator.speaker()'"
-    #   ",XF86AudioLowerVolume,  ${e} 'audio.speaker.volume -= 0.05; indicator.speaker()'"
-    # ];
+    bindl = [
+      ",switch:off:Lid Switch, exec, hyprctl keyword monitor \"eDP-1, 2256x1504, 0x0, 1.175\""
+      ",switch:on:Lid Switch, exec, hyprctl keyword monitor \"eDP-1, disable\""
+    ];
 
     bindle = [
       ",XF86MonBrightnessUp, exec, brightnessctl s +5%"
@@ -93,6 +93,8 @@
       ",XF86AudioNext, exec, playerctl --player=spotifyd next"
       ",XF86AudioPrev, exec, playerctl --player=spotifyd previous"
     ];
+
+
 
     # bindl = let e = "exec, ags -b hypr -r"; in [
     #   ",XF86AudioPlay,    ${e} 'mpris?.playPause()'"

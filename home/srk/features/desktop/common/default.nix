@@ -27,7 +27,7 @@
   gtk = {
     enable = true;
     cursorTheme.name = "Qogir";
-    cursorTheme.size = 16;
+    cursorTheme.size = 20;
 
     iconTheme.package = pkgs.qogir-icon-theme;
     iconTheme.name = "Qogir";

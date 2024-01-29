@@ -31,7 +31,8 @@ in
 
     settings = {
       exec-once = [
-        "hyprctl setcursor Qogir 16"
+        "hyprctl setcursor Qogir 20"
+        "wpaperd"
       ];
 
       monitor = [
@@ -42,17 +43,21 @@ in
       general = {
         layout = "dwindle";
         resize_on_border = true;
-        gaps_out = 5;
+        gaps_out = 10;
         gaps_in = 5;
       };
 
       input = {
         kb_layout = "us";
         kb_variant = "altgr-intl";
-        # kb_options = "caps:swapescape";
         numlock_by_default = true;
         touchpad.disable_while_typing = false;
         touchpad.natural_scroll = true;
+      };
+
+      # Laptop's internal keyboard
+      "device:at-translated-set-2-keyboard" = {
+        kb_options = "caps:swapescape";
       };
 
       binds = {

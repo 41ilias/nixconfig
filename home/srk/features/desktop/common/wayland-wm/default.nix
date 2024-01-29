@@ -4,6 +4,7 @@
     ./kitty.nix
     ./waybar.nix
     ./wofi.nix
+    ./wpaperd.nix
   ];
 
   xdg.mimeApps.enable = true;
