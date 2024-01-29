@@ -4,7 +4,6 @@
     ./kitty.nix
     ./waybar.nix
     ./wofi.nix
-    ./ags.nix
   ];
 
   xdg.mimeApps.enable = true;
@@ -28,6 +27,7 @@
     LIBSEAT_BACKEND = "logind";
     NIXOS_OZONE_WL = "1";
     MOZ_WEBRENDER = "1";
+    KEYID = "0x81183E9449CCADDF";
   };
 
   systemd.user.sessionVariables = {

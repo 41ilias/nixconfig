@@ -19,18 +19,6 @@
     polkit.enable = true;
   };
 
-  environment.systemPackages = with pkgs.gnome; [
-    adwaita-icon-theme
-    nautilus
-    baobab
-    gnome-calendar
-    gnome-boxes
-    gnome-system-monitor
-    gnome-control-center
-    gnome-weather
-    gnome-calculator
-  ];
-
   systemd = {
     user.services.polkit-gnome-authentication-agent-1 = {
       description = "polkit-gnome-authentication-agent-1";
@@ -53,11 +41,5 @@
     udisks2.enable = true;
     upower.enable = true;
     accounts-daemon.enable = true;
-    gnome = {
-      evolution-data-server.enable = true;
-      glib-networking.enable = true;
-      gnome-keyring.enable = true;
-      gnome-online-accounts.enable = true;
-    };
   };
 }

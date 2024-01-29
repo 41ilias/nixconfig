@@ -12,7 +12,6 @@
     
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland-plugins.url = "github:hyprwm/hyprland-plugins";
-    ags.url = "github:Aylur/ags";
     
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
@@ -38,16 +37,16 @@
       
 
       nixosConfigurations = {
-        workstation =  lib.nixosSystem {
-          modules = [ ./hosts/workstation ];
+        framework =  lib.nixosSystem {
+          modules = [ ./hosts/framework ];
           specialArgs = { inherit inputs outputs; };
         };
       };
 
       homeConfigurations = {
         # Desktops
-        "srk@workstation" = lib.homeManagerConfiguration {
-          modules = [ ./home/srk/workstation.nix ];
+        "srk@framework" = lib.homeManagerConfiguration {
+          modules = [ ./home/srk/framework.nix ];
           pkgs = pkgsFor.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs; };
         };

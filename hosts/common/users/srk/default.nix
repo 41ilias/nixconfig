@@ -5,12 +5,14 @@ in
   users.mutableUsers = true;
   users.users.srk = {
     isNormalUser = true;
+    description = "Ilias";
     shell = pkgs.fish;
     extraGroups = [
       "wheel"
       "video"
       "audio"
     ] ++ ifTheyExist [
+      "i2c"
       "network"
       "docker"
       "podman"

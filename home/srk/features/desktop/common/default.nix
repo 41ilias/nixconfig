@@ -4,7 +4,6 @@
   imports = [
     ./firefox.nix
     ./zathura.nix
-    ./kdeconnect.nix
   ];
   
   home.packages = with pkgs; [ 
@@ -22,13 +21,13 @@
     imagemagick
     pavucontrol
     brightnessctl
-    swww
+    light
   ];
 
   gtk = {
     enable = true;
     cursorTheme.name = "Qogir";
-    cursorTheme.size = 24;
+    cursorTheme.size = 16;
 
     iconTheme.package = pkgs.qogir-icon-theme;
     iconTheme.name = "Qogir";
@@ -36,6 +35,9 @@
 
     theme.package = pkgs.qogir-theme;
     theme.name = "Qogir";
+
+    font.name = "Fira Code";
+    font.size = 10;
   };
 
   qt = {

@@ -31,25 +31,28 @@ in
 
     settings = {
       exec-once = [
-        "ags -b hypr"
-        "hyprctl setcursor Qogir 24"
+        "hyprctl setcursor Qogir 16"
       ];
 
       monitor = [
-        "DP-1, preferred, 1080x640, auto"
-        "DP-2, preferred, 0x0, 1, transform, 1"
+        "eDP-1, 2256x1504, 0x0, 1.175"
+        "DP-3, 3840x2160, auto, 1.5"
       ];
 
       general = {
         layout = "dwindle";
         resize_on_border = true;
+        gaps_out = 5;
+        gaps_in = 5;
       };
 
       input = {
         kb_layout = "us";
         kb_variant = "altgr-intl";
+        # kb_options = "caps:swapescape";
         numlock_by_default = true;
         touchpad.disable_while_typing = false;
+        touchpad.natural_scroll = true;
       };
 
       binds = {
