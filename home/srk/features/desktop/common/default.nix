@@ -32,7 +32,7 @@
       accent = "Teal";
       variant = "Mocha";
     })
-    wpa_supplicant_gui_gui
+    wpa_supplicant_gui
   ];
 
   gtk = {
