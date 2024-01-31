@@ -5,6 +5,7 @@
     ./xdg.nix
     ./fonts.nix
     ./neovim.nix
+    ./bottom.nix
     ./gpg
     ./git.nix
     ../features/cli
@@ -35,7 +36,6 @@
     mpv
     lsof
     netcat-gnu
-    bottom
     xwaylandvideobridge
     neofetch
   ];
