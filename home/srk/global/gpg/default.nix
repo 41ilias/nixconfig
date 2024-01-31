@@ -29,7 +29,7 @@ in
       gpg = {
         enable = true;
         settings = {
-	  # Based on DrDuh gpg.conf (yubikey guide)
+	      # Based on DrDuh gpg.conf (yubikey guide)
           personal-cipher-preferences = "AES256 AES192 AES";
           personal-digest-preferences = "SHA512 SHA384 SHA256";
           personal-compress-preferences = "ZLIB BZIP2 ZIP Uncompressed";

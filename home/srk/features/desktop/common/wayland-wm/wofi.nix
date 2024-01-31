@@ -22,8 +22,8 @@
       @define-color bg2 #494d64;
       
        * {
-          font-family: 'JetBrains Mono Nerd Font', monospace;
-          font-size: 14px;
+          font-family: 'Fira Sans', 'FiraCode Nerd Font';
+          font-size: 13px;
        }
       
        /* Window */

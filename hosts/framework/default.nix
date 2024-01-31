@@ -33,6 +33,8 @@
     powerOnBoot = true;
   };
 
+  programs.light.enable = true;
+
   networking.hostName = "framework"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 

@@ -19,8 +19,6 @@ in
     ./basic-binds.nix
   ];
 
-  home.packages = [ launcher ];
-
   wayland.windowManager.hyprland = {
     enable = true;
     package = hyprland;
@@ -31,12 +29,12 @@ in
 
     settings = {
       exec-once = [
-        "hyprctl setcursor Qogir 20"
+        "hyprctl setcursor Catppuccin-Mocha-Teal-Cursors 32"
         "wpaperd"
       ];
 
       monitor = [
-        "eDP-1, 2256x1504, 0x0, 1.175"
+        "eDP-1, 2256x1504, 0x0, 1"
         "DP-3, 3840x2160, auto, 1.5"
       ];
 

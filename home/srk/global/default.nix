@@ -3,6 +3,7 @@
 {
   imports = [
     ./xdg.nix
+    ./fonts.nix
     ./neovim.nix
     ./gpg
     ./git.nix
@@ -36,5 +37,6 @@
     netcat-gnu
     bottom
     xwaylandvideobridge
+    neofetch
   ];
 }

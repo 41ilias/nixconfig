@@ -78,13 +78,13 @@
     ++ (lib.mapAttrsToList (key: direction: swapWin key direction) directions);
 
     bindl = [
-      ",switch:off:Lid Switch, exec, hyprctl keyword monitor \"eDP-1, 2256x1504, 0x0, 1.175\""
+      ",switch:off:Lid Switch, exec, hyprctl keyword monitor \"eDP-1, 2256x1504, 0x0, 1\""
       ",switch:on:Lid Switch, exec, hyprctl keyword monitor \"eDP-1, disable\""
     ];
 
     bindle = [
-      ",XF86MonBrightnessUp, exec, brightnessctl s +5%"
-      ",XF86MonBrightnessDown, exec, brightnessctl s 5%-"
+      ",XF86MonBrightnessUp, exec, light -T 1.4"
+      ",XF86MonBrightnessDown, exec, light -T 0.72"
 
       ",XF86AudioLowerVolume, exec, pactl set-sink-mute @DEFAULT_SINK@ off && pactl set-sink-volume @DEFAULT_SINK@ -5%"
       ",XF86AudioRaiseVolume, exec, (pactl set-sink-mute @DEFAULT_SINK@ off && pactl set-sink-volume @DEFAULT_SINK@ +5%)"

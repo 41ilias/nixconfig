@@ -8,10 +8,11 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_6_5;
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usb_storage" "ahci" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "amdgpu" "k10temp" "kvm-amd" ];
+  boot.kernelModules = [ "amdgpu" ];
+  boot.kernelParams = [ "amd_iommu=off" "amdgpu.sg_display=0" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
