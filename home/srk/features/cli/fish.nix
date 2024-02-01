@@ -7,6 +7,7 @@ let
   hasTrashy = hasPackage "trashy";
   hasKitty = hasPackage "kitty";
   hasZoxide = hasPackage "zoxide";
+  hasMacchina = hasPackage "macchina";
 in
 
 {
@@ -17,6 +18,9 @@ in
 
       ls = mkIf hasExa "eza";
       tree = mkIf hasExa "eza --tree";
+
+      neofetch = mkIf hasMacchina "macchina";
+      ftch = mkIf hasMacchina "macchina";
 
       ssh = mkIf hasKitty "kitty +kitten ssh";
     };
