@@ -16,6 +16,7 @@
       ../common/optional/pipewire.nix
       ../common/optional/docker.nix
       ../common/optional/hyprland.nix
+      ../common/optional/keyd.nix
     ];
 
   # Bootloader.

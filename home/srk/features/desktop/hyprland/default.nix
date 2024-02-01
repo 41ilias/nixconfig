@@ -30,6 +30,9 @@ in
     settings = {
       exec-once = [
         "hyprctl setcursor Catppuccin-Mocha-Teal-Cursors 32"
+      ];
+
+      exec = [
         "wpaperd"
       ];
 
@@ -54,9 +57,9 @@ in
       };
 
       # Laptop's internal keyboard
-      "device:at-translated-set-2-keyboard" = {
-        kb_options = "caps:swapescape";
-      };
+      # "device:at-translated-set-2-keyboard" = {
+      #   kb_options = "caps:swapescape";
+      # };
 
       binds = {
         allow_workspace_cycles = true;
