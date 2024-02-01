@@ -11,12 +11,13 @@
             esc = "capslock";
           };
           "capslock:C" = {
-              h = "left";
-              j = "down";
-              k = "up";
-              l = "right";
-              p = "up";
-              n = "down";
+            h = "left";
+            j = "down";
+            k = "up";
+            l = "right";
+            p = "up";
+            n = "down";
+            tab = "macro(7480525 enter)";
           };
         };
       };
