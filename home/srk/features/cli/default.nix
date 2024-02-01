@@ -7,6 +7,7 @@
     ./fzf.nix
     ./starship.nix
     ./tmux.nix
+    ./macchina.nix
   ];
 
   programs.zoxide.enable = true;
