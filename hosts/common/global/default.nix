@@ -5,13 +5,9 @@
     ./nix.nix
     ./fish.nix
     ./zsh.nix
+    ./openssh.nix
+    ./sops.nix
   ];
 
   home-manager.extraSpecialArgs = { inherit inputs outputs; };
-
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-    };
-  };
 }

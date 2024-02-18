@@ -1,32 +1,47 @@
 { pkgs, ... }:
 {
   imports = [
+    ./alacritty.nix
     ./kitty.nix
     ./waybar.nix
     ./wofi.nix
     ./wpaperd.nix
+    ./imv.nix
+    ./mako.nix
+    ./cliphist.nix
+    ./swappy.nix
+    ./wofi-rbw.nix
+    ./swayidle.nix
+    ./swaylock.nix
   ];
 
   xdg.mimeApps.enable = true;
   home.packages = with pkgs; [
     grim
-    imv
-    mimeo
-    pulseaudio
     slurp
-    waypipe
-    wf-recorder
+    imagemagick
     wl-clipboard
+    wl-clip-persist
+    wf-recorder
     wl-mirror
-    ydotool
+    qt6.qtwayland
+    qt5.qtwayland
   ];
 
   home.sessionVariables = {
-    MOZ_ENABLE_WAYLAND = 1;
+    XDG_CURRENT_DESKTOP = "Hyprland";
+    XDG_SESSION_DESKTOP = "Hyprland";
+    XDG_SESSION_TYPE = "wayland";
+    GDK_BACKEND = "wayland";
+    GTK_USE_PORTAL = "1";
+    QT_QPA_PLATFORMTHEME = "qt5ct";
     QT_QPA_PLATFORM = "wayland";
+    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+    QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+    MOZ_ENABLE_WAYLAND = 1;
+    MOZ_WEBRENDER = "1";
     LIBSEAT_BACKEND = "logind";
     NIXOS_OZONE_WL = "1";
-    MOZ_WEBRENDER = "1";
     KEYID = "0x81183E9449CCADDF";
   };
 

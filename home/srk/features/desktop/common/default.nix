@@ -3,36 +3,28 @@
 {
   imports = [
     ./firefox.nix
+    ./qutebrowser.nix
     ./zathura.nix
   ];
   
   home.packages = with pkgs; [ 
     cinnamon.nemo
     google-chrome
-    grim
-    slurp
-    wl-gammactl
-    wl-clipboard
-    wf-recorder
-    hyprpicker
-    wayshot
-    swappy
-    slurp
-    imagemagick
     pavucontrol
-    brightnessctl
     webcord-vencord
     powerstat
     libsForQt5.qtstyleplugin-kvantum
     libsForQt5.lightly
     qt6Packages.qt6ct
-    qt6.qtwayland
-    qt5.qtwayland
     (catppuccin-kvantum.override {
       accent = "Teal";
       variant = "Mocha";
     })
-    wpa_supplicant_gui
+
+    #---
+    gns3-gui
+    gns3-server
+    ciscoPacketTracer8
   ];
 
   gtk = {
@@ -40,7 +32,7 @@
 
     font = {
       name = "Fira Sans";
-      size = 12;
+      size = 13;
     };
 
     iconTheme = {
@@ -88,23 +80,7 @@
 
   home.sessionVariables = {
     GTK_THEME = "Catppuccin-Mocha-Standard-Teal-Dark";
-    XDG_CURRENT_DESKTOP = "Hyprland";
-    XDG_SESSION_DESKTOP = "Hyprland";
-    XDG_SESSION_TYPE = "wayland";
-    GDK_BACKEND = "wayland";
-    GTK_USE_PORTAL = "1";
-    QT_QPA_PLATFORMTHEME = "qt5ct";
-    QT_QPA_PLATFORM = "wayland";
-    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-    QT_AUTO_SCREEN_SCALE_FACTOR = "1";
   };
-
-  # qt = {
-  #   enable = true;
-  #   platformTheme = "gtk";
-  #   style.name = "adwaita-dark";
-  #   style.package = pkgs.adwaita-qt;
-  # };
 
   qt = {
     enable = true;
@@ -115,6 +91,7 @@
     };
   };
 
+  # TODO: doesnt' seemm to work, I had to open Kvantum and set the theme manually
   xdg.configFile = {
     "Kvantum/Catppuccin-Mocha-Teal/Catppuccin-Mocha-Teal/Catppuccin-Mocha-Teal.kvconfig".source = "${pkgs.catppuccin-kvantum}/share/Kvantum/Catppuccin-Mocha-Teal/Cattpuccin-Mocha-Teal.kvconfig";
     "Kvantum/Catppuccin-Mocha-Teal/Catppuccin-Mocha-Teal/Catppuccin-Mocha-Teal.svg".source = "${pkgs.catppuccin-kvantum}/share/Kvantum/Catppuccin-Mocha-Teal/Cattpuccin-Mocha-Teal.svg";

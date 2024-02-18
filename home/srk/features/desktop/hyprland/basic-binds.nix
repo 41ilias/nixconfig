@@ -1,19 +1,6 @@
-{ lib, config, ... }:
+{ pkgs, lib, config, ... }:
 {
   wayland.windowManager.hyprland.settings = {
-
-    # workspace = [
-    #   "1,  name:1, monitor:DP-2, persistent:true, default:true"
-    #   "2,  name:2, monitor:DP-1, persistent:true, default:true"
-    #   "3,  name:3, monitor:DP-1, persistent:false"
-    #   "4,  name:4, monitor:DP-1, persistent:false"
-    #   "5,  name:5, monitor:DP-1, persistent:false"
-    #   "6,  name:6, monitor:DP-1, persistent:false"
-    #   "7,  name:7, monitor:DP-1, persistent:false"
-    #   "8,  name:8, monitor:DP-1, persistent:false"
-    #   "9,  name:9, monitor:DP-1, persistent:false"
-    #   "10, name:0, monitor:DP-2, persistent:false"
-    # ];
 
     bind = let
 
@@ -26,6 +13,15 @@
 
       terminal = config.home.sessionVariables.TERMINAL;
       wofi = "${config.programs.wofi.package}/bin/wofi";
+      alacritty = "${config.programs.alacritty.package}/bin/alacritty";
+      qalc = "${pkgs.libqalculate}/bin/qalc";
+      cliphist = "${pkgs.cliphist}/bin/cliphist";
+      wl-copy = "${pkgs.wl-clipboard}/bin/wl-copy}";
+      grim = "${pkgs.grim}/bin/grim";
+      slurp = "${pkgs.slurp}/bin/slurp";
+      swappy = "${pkgs.swappy}/bin/swappy";
+      convert = "${pkgs.imagemagick}/bin/convert";
+      wofi-rbw = "${pkgs.rofi-rbw}/bin/rofi-rbw";
 
       ws = key: "SUPER, ${key}, workspace, ${key}";
       mv2ws = key: "SUPERSHIFT, ${key}, movetoworkspacesilent, ${key}";
@@ -43,10 +39,14 @@
       "SUPER, D, exec, ${wofi} -S drun -W 50% -H 30%"
       "SUPER, R, exec, ${wofi} -S run"
 
+      "SUPER, Q, exec, ${alacritty} --hold -e ${qalc}" 
+
+      "SUPER, C, exec, ${cliphist} list | ${wofi} --dmenu -p cliphist | ${cliphist} decode | ${wl-copy}"
+
+      "SUPER, P, exec, ${grim} -g \"$(${slurp})\" - | ${convert} - -shave 1x1 PNG:- |  ${swappy} -f -"
 
       "SUPERSHIFT, Q, killactive"
       "SUPERSHIFT, E, exit"
-
 
       "SUPER, Tab, focuscurrentorlast"
       # "SUPERSHIFT, Tab, ${ags} -t overview"
@@ -56,14 +56,14 @@
 
       "SUPERSHIFT, space, togglefloating"
 
-      "SUPER,minus,splitratio,-0.25"
-      "SUPERSHIFT,minus,splitratio,-0.3333333"
+      "SUPER,       m,      layoutmsg,      focustmaster,       master"
+      "SUPERSHIFT,  M,      layoutmsg,      swapwithmaster"
 
-      "SUPER,equal,splitratio,0.25"
-      "SUPERSHIFT,equal,splitratio,0.3333333"
+      "SUPER,       minus,  splitratio,     -0.1"
+      "SUPER,       equal,  splitratio,     0.1"
 
-      "SUPER,u,togglespecialworkspace"
-      "SUPERSHIFT,u,movetoworkspacesilent,special"
+      "SUPER,s,togglespecialworkspace"
+      "SUPERSHIFT,s,movetoworkspacesilent,special"
 
       "SUPER, O, fakefullscreen"
       "SUPER, P, togglesplit"
@@ -82,19 +82,22 @@
       ",switch:on:Lid Switch, exec, hyprctl keyword monitor \"eDP-1, disable\""
     ];
 
-    bindle = [
-      ",XF86MonBrightnessUp, exec, light -T 1.4"
-      ",XF86MonBrightnessDown, exec, light -T 0.72"
+    bindle = let
 
-      ",XF86AudioLowerVolume, exec, pactl set-sink-mute @DEFAULT_SINK@ off && pactl set-sink-volume @DEFAULT_SINK@ -5%"
-      ",XF86AudioRaiseVolume, exec, (pactl set-sink-mute @DEFAULT_SINK@ off && pactl set-sink-volume @DEFAULT_SINK@ +5%)"
-      ",XF86AudioMute, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle"
-      ",XF86AudioPlay, exec, playerctl --player=spotifyd play-pause"
-      ",XF86AudioNext, exec, playerctl --player=spotifyd next"
-      ",XF86AudioPrev, exec, playerctl --player=spotifyd previous"
+      wpctl = "${pkgs.wireplumber}/bin/wpctl";
+      light = "${pkgs.light}/bin/light";
+
+    in [
+      ",XF86MonBrightnessUp,    exec,   ${light} -T 1.4"
+      ",XF86MonBrightnessDown,  exec,   ${light} -T 0.72"
+
+      ",XF86AudioLowerVolume, exec, ${wpctl} set-mute @DEFAULT_AUDIO_SINK@ 0 && ${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+      ",XF86AudioRaiseVolume, exec, ${wpctl} set-mute @DEFAULT_AUDIO_SINK@ 0 && ${wpctl} set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
+      ",XF86AudioMute,        exec, ${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle"
+      # ",XF86AudioPlay, exec, playerctl --player=spotifyd play-pause"
+      # ",XF86AudioNext, exec, playerctl --player=spotifyd next"
+      # ",XF86AudioPrev, exec, playerctl --player=spotifyd previous"
     ];
-
-
 
     # bindl = let e = "exec, ags -b hypr -r"; in [
     #   ",XF86AudioPlay,    ${e} 'mpris?.playPause()'"

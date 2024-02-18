@@ -1,5 +1,12 @@
 { inputs, lib, ... }:
 {
+
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+    };
+  };
+
   nix = {
     settings = {
       trusted-users = [ "root" "@wheel" ];
@@ -13,7 +20,7 @@
       automatic = true;
       dates = "weekly";
       # Keep the last 3 generations
-      options = "--delete-older-than +3";
+      options = "--delete-older-than 7d";
     };
 
     # Add each flake input as a registry

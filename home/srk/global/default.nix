@@ -29,14 +29,16 @@
     fd # Better find
     httpie # Better curl
     jq # JSON pretty printer and manipulator
+    yq # JQ for YAML/XML/TOML
     eza # Better ls
     trashy # in order to disable rm
     unar
     xdg-utils
     mpv
     lsof
+    killall
     netcat-gnu
     xwaylandvideobridge
-    neofetch
+    font-manager
   ];
 }

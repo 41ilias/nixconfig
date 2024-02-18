@@ -9,9 +9,20 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
-    hyprland.url = "github:hyprwm/Hyprland";
-    hyprland-plugins.url = "github:hyprwm/hyprland-plugins";
+
+    sops-nix = {
+      url = "github:mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprland = {
+      url = "github:hyprwm/hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hyprwm-contrib = {
+      url = "github:hyprwm/contrib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
@@ -19,7 +30,7 @@
     };
   };
 
-  outputs = { flake-parts, self, nixpkgs, home-manager, ...}@inputs:
+  outputs = { self, nixpkgs, home-manager, ...}@inputs:
     let
       inherit (self) outputs;
       lib = nixpkgs.lib // home-manager.lib;
@@ -32,21 +43,19 @@
     in
     {
       inherit lib;
-
       packages = forEachSystem (pkgs: import ./pkgs { inherit pkgs; });
       
-
       nixosConfigurations = {
-        framework =  lib.nixosSystem {
-          modules = [ ./hosts/framework ];
+        framenomad =  lib.nixosSystem {
+          modules = [ ./hosts/framenomad ];
           specialArgs = { inherit inputs outputs; };
         };
       };
 
       homeConfigurations = {
         # Desktops
-        "srk@framework" = lib.homeManagerConfiguration {
-          modules = [ ./home/srk/framework.nix ];
+        "srk@framenomad" = lib.homeManagerConfiguration {
+          modules = [ ./home/srk/framenomad.nix ];
           pkgs = pkgsFor.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs; };
         };

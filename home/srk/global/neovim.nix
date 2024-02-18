@@ -36,6 +36,7 @@
             # Usefull stuff
             vimPlugins.gitsigns-nvim
             vimPlugins.comment-nvim
+            vimPlugins.vim-sleuth
 
             # Preview Markdown
             vimPlugins.markdown-preview-nvim

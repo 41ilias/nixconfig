@@ -21,7 +21,7 @@ in
     };
 
     settings = {
-      shell-integration = "no-rc";
+      shell_integration = "no-rc";
       scrollback_lines = 4000;
       scrollback_pager_history_size = 2048;
       window_padding_width = 5;

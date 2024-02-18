@@ -1,0 +1,10 @@
+keys:
+  - &srk FB50322DA9C93E7744F5CC9681183E9449CCADDF  
+  - &framework age19ejkpx2875anpmyu9nl8rvgmje7gld0fxxc0d8jn7qx7aa4csuwqlanxm7
+creation_rules:
+  - path_regex: secrets.yaml$
+    key_groups:
+    - pgp:
+      - *srk
+      age:
+      - *framework

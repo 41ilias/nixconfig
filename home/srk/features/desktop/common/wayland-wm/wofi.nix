@@ -22,8 +22,8 @@
       @define-color bg2 #494d64;
       
        * {
-          font-family: 'Fira Sans', 'FiraCode Nerd Font';
-          font-size: 13px;
+          font-family: 'FiraCode Nerd Font';
+          font-size: 17;
        }
       
        /* Window */

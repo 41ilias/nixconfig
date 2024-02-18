@@ -7,7 +7,7 @@
 
     options = {
       selection-clipboard = "clipboard";
-      font = "Fira Sans 13";
+      font = "FiraCode Nerd Font 13";
       recolor = true;
       default-fg                = "#CDD6F4";
       default-bg 			          = "#1E1E2E";
