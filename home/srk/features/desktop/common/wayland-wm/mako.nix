@@ -1,7 +1,8 @@
-{ ... }:
+{ config, ... }:
 {
   services.mako = {
     enable = true;
+    iconPath = "${config.gtk.iconTheme.package}/share/icons/Papirus-Dark";
     backgroundColor = "#1E1E2EFF";
     borderColor = "#94e2d5FF";
     borderRadius = 15;

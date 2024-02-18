@@ -14,7 +14,7 @@
       ../common/global
       ../common/users/srk
       ../common/optional/pipewire.nix
-      # ../common/optional/greetd.nix
+      ../common/optional/greetd.nix
       ../common/optional/docker.nix
       ../common/optional/hyprland.nix
       ../common/optional/keyd.nix

@@ -28,6 +28,7 @@ in
 
       exec = [
         "wpaperd"
+        "sway-audio-idle-inhibit"
       ];
 
       monitor = [

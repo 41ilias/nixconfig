@@ -10,13 +10,13 @@
     ./mako.nix
     ./cliphist.nix
     ./swappy.nix
-    ./wofi-rbw.nix
     ./swayidle.nix
     ./swaylock.nix
   ];
 
   xdg.mimeApps.enable = true;
   home.packages = with pkgs; [
+    libnotify
     grim
     slurp
     imagemagick
@@ -26,6 +26,7 @@
     wl-mirror
     qt6.qtwayland
     qt5.qtwayland
+    sway-audio-idle-inhibit
   ];
 
   home.sessionVariables = {
