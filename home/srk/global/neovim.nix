@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ pkgs, inputs, ... }:
 
 {
     programs.neovim = {
@@ -66,7 +66,10 @@
             '';
 
         extraPackages = with pkgs; [
-            # languages
+            # Nix LSP and Formatter
+            nil
+            nixfmt
+
             nodejs
 
             # language servers

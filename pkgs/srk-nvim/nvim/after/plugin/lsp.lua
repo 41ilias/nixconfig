@@ -71,6 +71,19 @@ capabilities.textDocument.completion.completionItem = {
 
 local lspconfig = require 'lspconfig'
 
+lspconfig.nil_ls.setup {
+    autostart = true,
+    on_attach = on_attach,
+    capabilities = capabilities,
+    settings = {
+        ['nil'] = {
+            formatting = {
+                command = { "nixpkgs-fmt" },
+            },
+        },
+    },
+}
+
 lspconfig.pyright.setup {
     on_attach = on_attach,
     capabilities = capabilities,
@@ -118,42 +131,42 @@ lspconfig.efm.setup({
 })
 
 -- lspconfig.tsserver.setup {
---     on_attach = on_attach,
---     capabilities = capabilities
--- }
--- 
--- lspconfig.bashls.setup {
---     on_attach = on_attach,
---     capabilities = capabilities
--- }
--- 
--- lspconfig.html.setup {
---     on_attach = on_attach,
---     capabilities = capabilities,
---     settings = {
---         html = {
---             indent_size = 2
---         }
---     }
--- }
--- 
--- lspconfig.cssls.setup{
---     on_attach = on_attach,
---     capabilities = capabilities
--- }
--- 
--- lspconfig.dockerls.setup{
---     on_attach = on_attach,
---     capabilities = capabilities
--- }
--- 
--- lspconfig.jsonls.setup{
---     on_attach = on_attach,
---     capabilities = capabilities
--- }
--- 
--- lspconfig.omnisharp.setup {
---     cmd = { "omnisharp" },
---     on_attach = on_attach,
---     capabilities = capabilities,
--- }
+    --     on_attach = on_attach,
+    --     capabilities = capabilities
+    -- }
+    -- 
+    -- lspconfig.bashls.setup {
+        --     on_attach = on_attach,
+        --     capabilities = capabilities
+        -- }
+        -- 
+        -- lspconfig.html.setup {
+            --     on_attach = on_attach,
+            --     capabilities = capabilities,
+            --     settings = {
+                --         html = {
+                    --             indent_size = 2
+                    --         }
+                    --     }
+                    -- }
+                    -- 
+                    -- lspconfig.cssls.setup{
+                        --     on_attach = on_attach,
+                        --     capabilities = capabilities
+                        -- }
+                        -- 
+                        -- lspconfig.dockerls.setup{
+                            --     on_attach = on_attach,
+                            --     capabilities = capabilities
+                            -- }
+                            -- 
+                            -- lspconfig.jsonls.setup{
+                                --     on_attach = on_attach,
+                                --     capabilities = capabilities
+                                -- }
+                                -- 
+                                -- lspconfig.omnisharp.setup {
+                                    --     cmd = { "omnisharp" },
+                                    --     on_attach = on_attach,
+                                    --     capabilities = capabilities,
+                                    -- }
