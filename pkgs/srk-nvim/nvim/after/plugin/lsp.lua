@@ -105,13 +105,28 @@ lspconfig.ltex.setup{
     capabilities = capabilities,
 }
 
+lspconfig.terraformls.setup{
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
+
 
 local flake8 = require('efmls-configs.linters.flake8')
 local black = require('efmls-configs.formatters.black')
+local eslint = require("efmls-configs.linters.eslint")
+local prettier_d = require("efmls-configs.formatters.prettier_d")
+local fixjson = require("efmls-configs.formatters.fixjson")
 
 lspconfig.efm.setup({
     filetypes = {
         "python",
+        "markdown",
+        "json",
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "markdown"
     },
 
     init_options = {
@@ -126,14 +141,39 @@ lspconfig.efm.setup({
     settings = {
         languages = {
             python = { flake8, black }, 
+            json = { eslint, fixjson },
+            javascript = { eslint, prettier_d },
+			javascriptreact = { eslint, prettier_d },
+            typescript = { eslint, prettier_d },
+			typescriptreact = { eslint, prettier_d },
+            markdown = { prettier_d }
         }
     }
 })
 
--- lspconfig.tsserver.setup {
-    --     on_attach = on_attach,
-    --     capabilities = capabilities
-    -- }
+lspconfig.tsserver.setup {
+    on_attach = on_attach,
+    capabilities = capabilities
+}
+
+lspconfig.gopls.setup{
+  cmd = {'gopls'},
+  -- on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    gopls = {
+      experimentalPostfixCompletions = true,
+      analyses = {
+        unusedparams = true,
+        shadow = true,
+      },
+      staticcheck = true,
+    },
+  },
+  init_options = {
+    usePlaceholders = true,
+  }
+}
     -- 
     -- lspconfig.bashls.setup {
         --     on_attach = on_attach,

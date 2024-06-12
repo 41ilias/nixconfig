@@ -18,6 +18,7 @@ in
       "podman"
       "git"
       "libvirtd"
+      "adbusers"
     ];
 
     hashedPasswordFile = config.sops.secrets.srk_password.path;

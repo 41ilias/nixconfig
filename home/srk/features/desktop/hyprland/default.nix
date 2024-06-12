@@ -1,6 +1,6 @@
 { inputs, lib, config, pkgs, ... }:
 let
-  hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
+  # hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
 in
 {
   imports = [
@@ -9,13 +9,12 @@ in
     ./basic-binds.nix
   ];
 
-  # home.packages = with pkgs; [
-  #   inputs.hyprwm-contrib.grimblast
-  # ];
+  home.packages = with pkgs; [
+    hyprpicker
+  ];
 
   wayland.windowManager.hyprland = {
     enable = true;
-    package = hyprland;
     systemd.enable = true;
     xwayland.enable = true;
 
@@ -23,18 +22,27 @@ in
 
     settings = {
       exec-once = [
-        "hyprctl setcursor Catppuccin-Mocha-Teal-Cursors 32"
+        "hyprctl setcursor Catppuccin-Mocha-Dark-Cursors 32"
+        "sway-audio-idle-inhibit"
       ];
 
       exec = [
         "wpaperd"
-        "sway-audio-idle-inhibit"
       ];
 
       monitor = [
-        "eDP-1, 2256x1504,  0x2160,        1"
-        "DP-3,  highres,    0x0,        1"
-        ",      highres,    auto,       1"
+        "eDP-1,                                             2256x1504,  0x2160,     1"
+        "desc:Samsung Electric Company LU28R55 HNMR202267,  3840x2160,  0x0,        1"
+        "desc:Samsung Electric Company C27F390 HTQH502177,  1920x1080,  -1080x0,    1,  transform,  1"
+        # For random moniotrs
+        ",                                                  highres,    2256x2160,  1"
+      ];
+
+      workspace = [
+        "name:Mirror, monitor:DP-4,                                             default:true"
+        "name:Docs,   monitor:desc:Samsung Electric Company C27F390 HTQH502177,             , on-created-empty:firefox"
+        "2,           monitor:desc:Samsung Electric Company LU28R55 HNMR202267, default:true, on-created-empty:firefox"
+        "3,           monitor:desc:Samsung Electric Company LU28R55 HNMR202267, default:true, on-created-empty:kitty"
       ];
 
       general = {
@@ -96,13 +104,24 @@ in
         "noinitialfocus,class:^(xwaylandvideobridge)$"
         "float,class:(PacketTracer),title:(kitty)"
         "float,class:(Alacritty),title:(Alacritty)"
+        "nodim,title:^Wayland Output Mirror"
+        "opaque,title:^Wayland Output Mirror"
+        "fullscreen,title:^Wayland Output Mirror"
+        "workspace name:Mirror,title:^Wayland Output Mirror"
+
+        # TODO: remove after project
+        "float,class:(Tk),title:(ttkbootstrap)"
+        "float,class:(Tk),title:(CryptoSRK)"
+        "move onscreen cursor 0 0 ,class:(Tk),title:(CryptoSRK)"
+        "size 900 500,class:(TkChooseDir)"
+        "center,class:(TkChooseDir)"
       ];
 
       decoration = {
         rounding = 15;
 
         active_opacity = 1;
-        inactive_opacity = 0.90;
+        inactive_opacity = 0.80;
 
         drop_shadow = true;
         shadow_range = 8;
@@ -110,8 +129,8 @@ in
         "col.shadow" = "rgba(00000044)";
 
         dim_inactive = true;
-        dim_strength = 0.3;
-        dim_special = 0.3;
+        dim_strength = 0.2;
+        dim_special = 0.2;
 
         blur = {
           enabled = true;

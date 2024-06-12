@@ -63,10 +63,6 @@
     efi.canTouchEfiVariables = true;
   };
 
-  boot.kernelParams = [
-    "video=DP-1:3840x2160@60"
-  ];
-  
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-emoji

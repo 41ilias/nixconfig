@@ -27,6 +27,8 @@
     qt6.qtwayland
     qt5.qtwayland
     sway-audio-idle-inhibit
+
+    scrcpy
   ];
 
   home.sessionVariables = {

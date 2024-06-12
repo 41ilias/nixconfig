@@ -6,6 +6,9 @@
 {
   programs.firefox = {
     enable = true;
+    nativeMessagingHosts = [
+      pkgs.web-eid-app
+    ];
     profiles.srk = {
       # Here misterio77 is able to just use pkgs.inputs.firefox-addons
       extensions =  with inputs.firefox-addons.packages."x86_64-linux"; [

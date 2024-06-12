@@ -8,9 +8,18 @@
     ./bottom.nix
     ./gpg
     ./git.nix
-    ../features/cli
     ./direnv.nix
+    ./zoxide.nix
+    ./bat.nix
+    ../features/cli
   ];
+
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = (_: true);
+    };
+  };
 
   programs = {
     home-manager.enable = true;
@@ -28,17 +37,20 @@
     ripgrep # Better grep
     fd # Better find
     httpie # Better curl
+    eza # Better ls
+    tldr
+
     jq # JSON pretty printer and manipulator
     yq # JQ for YAML/XML/TOML
-    eza # Better ls
+    jwt-cli
+    html-tidy
     trashy # in order to disable rm
     unar
     xdg-utils
     mpv
+    jellyfin-ffmpeg
     lsof
-    killall
     netcat-gnu
     xwaylandvideobridge
-    font-manager
   ];
 }

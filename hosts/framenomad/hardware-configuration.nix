@@ -8,7 +8,8 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.kernelPackages = pkgs.linuxPackages_6_5;
+  # boot.kernelPackages = pkgs.linuxPackages_6_6;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usb_storage" "ahci" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "amdgpu" ];
@@ -35,16 +36,16 @@
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
 
-  networking.interfaces.vpn_hena = {
-    useDHCP = true;
-    # ipv4.routes = [
-    #   {
-    #     address = "10.101.150.0";
-    #     prefixLength = 24;
-    #     via = "192.168.33.1";
-    #   }
-    # ];
-  };
+  # networking.interfaces.vpn_hena = {
+  #   useDHCP = true;
+  #   # ipv4.routes = [
+  #   #   {
+  #   #     address = "10.101.150.0";
+  #   #     prefixLength = 24;
+  #   #     via = "192.168.33.1";
+  #   #   }
+  #   # ];
+  # };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
@@ -55,4 +56,7 @@
     driSupport32Bit = true;
     extraPackages = with pkgs; [ mesa libva ];
   };
+
+  # Enable udev rules for Ledger devices.
+  hardware.ledger.enable = true;
 }

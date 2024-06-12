@@ -1,11 +1,9 @@
 { pkgs, lib, config, ... }:
-let
-in
 {
   users.extraUsers.greeter = {
     packages = with pkgs; [
 
-      catppuccin-cursors.mochaTeal
+      catppuccin-cursors.mochaDark
       catppuccin-gtk
       catppuccin-papirus-folders
     ];
@@ -22,7 +20,7 @@ in
         icon_theme_name = "Papirus-Dark";
         application_prefer_dark_theme = true;
         # Doesn't seem to work
-        cursor_theme_name = "Catppuccin-Mocha-Teal-Cursors";
+        cursor_theme_name = "Catppuccin-Mocha-Dark-Cursors";
         font_name = "FiraCode Nerd Font 17";
         theme_name = "Catppuccin-Mocha-Standard-Teal-Dark";  
       };

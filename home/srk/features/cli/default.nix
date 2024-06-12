@@ -9,6 +9,8 @@
     ./tmux.nix
     ./macchina.nix
     ./rbw.nix
+    ./ssh.nix
+    ./nnn.nix
   ];
 
   programs.zoxide.enable = true;
@@ -18,5 +20,8 @@
     glab
     libqalculate
     inetutils
+    poppler_utils
+    git-crypt
+    file
   ];
 }

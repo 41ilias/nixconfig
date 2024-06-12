@@ -9,7 +9,13 @@
 	  dataHome = "${config.home.homeDirectory}/.local/share";
 	  stateHome = "${config.home.homeDirectory}/.local/state";
 
-    mimeApps.enable = true;
+    mimeApps = {
+      enable = true;
+      defaultApplications = {
+	"application/pdf" = [ "zathura.desktop" ];
+	"inode/directory" = [ "nemo.desktop" ];
+      };
+    };
 
     systemDirs = {
       config = [ "/etc/xdg" ];

@@ -43,6 +43,8 @@ in
 
       primaryBar = {
 
+        output = [ "eDP-1" "DP-3"];
+
         layer = "top";
         margin = "5 5 0 5";
         spacing = 0;
@@ -56,6 +58,7 @@ in
           "hyprland/workspaces"
         ];
         modules-right = [
+         "idle_inhibitor"
          "network#eth"
          "network#wifi"
          "bluetooth"
@@ -93,6 +96,14 @@ in
           format = " {:%H:%M  󰃭 %a %d/%m}";
           format-alt = "󰃭 {:%A; %B %d, %Y 󰥔 %R}";
           tooltip-format = "<tt><small>{calendar}</small></tt>";
+        };
+
+        idle_inhibitor = {
+          format = "{icon}";
+          format-icons = {
+            activated = "󰒳";
+            deactivated = "󰒲";
+          };
         };
 
         "network#eth" = {
@@ -363,6 +374,25 @@ in
           opacity:0.8;
           border:2px solid @overlay2;   
       }
+
+      /* -----------------------------------------------------
+       * Inhibitor
+       * ----------------------------------------------------- */
+      
+      #idle_inhibitor {
+          background-color: @crust;
+          padding: 2px 10px 0px 10px;
+          margin: 5px 15px 5px 0px;
+          color: @rosewater;
+          border-radius: 15px;
+          opacity:0.8;
+          border:2px solid @overlay2;   
+      }
+
+      #idle_inhibitor.activated {
+          background-color: @yellow;
+      }
+
       
       /* -----------------------------------------------------
        * Network

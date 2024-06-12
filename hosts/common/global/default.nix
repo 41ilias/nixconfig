@@ -7,6 +7,7 @@
     ./zsh.nix
     ./openssh.nix
     ./sops.nix
+    ./tailscale.nix
   ];
 
   home-manager.extraSpecialArgs = { inherit inputs outputs; };

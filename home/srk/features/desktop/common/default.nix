@@ -6,8 +6,8 @@
     ./qutebrowser.nix
     ./zathura.nix
   ];
-  
-  home.packages = with pkgs; [ 
+
+  home.packages = with pkgs; [
     cinnamon.nemo
     google-chrome
     pavucontrol
@@ -20,6 +20,9 @@
       accent = "Teal";
       variant = "Mocha";
     })
+
+    obsidian
+    remmina
 
     #---
     gns3-gui
@@ -54,8 +57,8 @@
     };
 
     cursorTheme = {
-      name = "Catppuccin-Mocha-Teal-Cursors";
-      package = pkgs.catppuccin-cursors.mochaTeal;
+      name = "Catppuccin-Mocha-Dark-Cursors";
+      package = pkgs.catppuccin-cursors.mochaDark;
       size = 32;
     };
 
@@ -73,8 +76,8 @@
   };
 
   home.pointerCursor = {
-    name = "Catppuccin-Mocha-Teal-Cursors";
-    package = pkgs.catppuccin-cursors.mochaTeal;
+    name = "Catppuccin-Mocha-Dark-Cursors";
+    package = pkgs.catppuccin-cursors.mochaDark;
     size = 32;
   };
 
@@ -84,16 +87,18 @@
 
   qt = {
     enable = true;
-    platformTheme = "qtct";
+    platformTheme.name = "qtct";
     style = {
       package = pkgs.catppuccin-kvantum;
       name = "kvantum";
     };
   };
 
-  # TODO: doesnt' seemm to work, I had to open Kvantum and set the theme manually
-  xdg.configFile = {
-    "Kvantum/Catppuccin-Mocha-Teal/Catppuccin-Mocha-Teal/Catppuccin-Mocha-Teal.kvconfig".source = "${pkgs.catppuccin-kvantum}/share/Kvantum/Catppuccin-Mocha-Teal/Cattpuccin-Mocha-Teal.kvconfig";
-    "Kvantum/Catppuccin-Mocha-Teal/Catppuccin-Mocha-Teal/Catppuccin-Mocha-Teal.svg".source = "${pkgs.catppuccin-kvantum}/share/Kvantum/Catppuccin-Mocha-Teal/Cattpuccin-Mocha-Teal.svg";
-  };
+  xdg.configFile."Kvantum/kvantum.kvconfig".text = ''
+    [General]
+    theme=KvAdapta
+
+    [Applications]
+    Catppuccin-Mocha-Teal=hyprland-share-picker
+  '';
 }

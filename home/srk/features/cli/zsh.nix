@@ -20,7 +20,7 @@ in
     dotDir = ".config/zsh";
     defaultKeymap = "viins";
 
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     enableCompletion = true;
     syntaxHighlighting = {
       enable = true;

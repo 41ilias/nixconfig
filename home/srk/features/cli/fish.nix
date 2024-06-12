@@ -3,50 +3,49 @@ let
   inherit (lib) mkIf;
   hasPackage = pname: lib.any (p: p ? pname && p.pname == pname) config.home.packages;
 
-  hasExa = hasPackage "eza";
+  hasEza = hasPackage "eza";
   hasTrashy = hasPackage "trashy";
   hasKitty = hasPackage "kitty";
-  hasZoxide = hasPackage "zoxide";
   hasMacchina = hasPackage "macchina";
+  hasBat = hasPackage "bat";
 in
 
 {
   programs.fish = {
     enable = true;
-    shellAbbrs = rec {
+    shellAbbrs = {
       rm = mkIf hasTrashy "trash put";
 
-      ls = mkIf hasExa "eza";
-      tree = mkIf hasExa "eza --tree";
+      ls = mkIf hasEza "eza";
+      tree = mkIf hasEza "eza --tree";
 
       neofetch = mkIf hasMacchina "macchina";
       ftch = mkIf hasMacchina "macchina";
 
       ssh = mkIf hasKitty "kitty +kitten ssh";
+
+      man = mkIf hasBat "batman";
     };
 
-    functions = {
-      __fish_command_not_found_handler = {
-        body = "__fish_default_command_not_found_handler $argv[1]";
-        onEvent = "fish_command_not_found";
-      };
-
-      rm = "set_color red;\necho \"  rm dissabled: use dd (trashy)\"";
-
+    shellAliases = {
+      bat = "bat --theme mocha";
     };
 
     interactiveShellInit =
       # Deactivate greeting 
       ''
         set fish_greeting ""
+        set MANPAGER "sh -c 'col -bx | bat -l man -p'"
       ''+
+
       # keybindings
-        # \cY by default is yank (but since Ctrl Shift C works too, then I remap it to accept-autosuggestion)
+      # \cY by default is yank (but since Ctrl Shift C works too, then I remap it to accept-autosuggestion)
       ''
         bind -M insert \cN complete
         bind -M insert \cP complete-and-search
         bind -M insert \cY accept-autosuggestion
       '' +
+      # TODO: look more in depth into this why ctrl+shift+p y doens't work? (Kitty should be able to open files)
       # kitty integration
       ''
         set --global KITTY_INSTALLATION_DIR "${pkgs.kitty}/lib/kitty"

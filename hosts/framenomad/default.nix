@@ -18,6 +18,10 @@
       ../common/optional/docker.nix
       ../common/optional/hyprland.nix
       ../common/optional/keyd.nix
+      ../common/optional/adb.nix
+      ../common/optional/desktop.nix
+      ../common/optional/smbshares.nix
+      ../common/optional/printer.nix
     ];
 
   # Bootloader.
@@ -40,6 +44,23 @@
   networking = {
     hostName = "framenomad";
     firewall.enable = false;
+    extraHosts = ''
+      127.0.0.1 host.docker.internal
+      127.0.0.1 t3app.local
+      10.0.0.8  vimsnap.local
+      10.0.0.150 janus
+      10.0.0.141 dugalle
+      10.0.0.142 dugalle2
+      10.0.0.143 raynor
+      10.0.0.144 duke
+    '';
+  };
+
+  xdg.mime = {
+    enable = true;
+    defaultApplications = {
+	  "inode/directory" = [ "nemo.desktop" ];
+    };
   };
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -79,14 +100,18 @@
     libvdpau
     ddcutil
     openssl_3_2
+
+    scrcpy
   ];
 
-  services.softether = {
-    enable = true;
-    vpnclient = {
-      enable = true;
-    };
-  };
+  # services.softether = {
+  #   enable = true;
+  #   vpnclient = {
+  #     enable = true;
+  #   };
+  # };
+
+  services.pcscd.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
