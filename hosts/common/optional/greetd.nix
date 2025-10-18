@@ -21,7 +21,7 @@
         application_prefer_dark_theme = true;
         # Doesn't seem to work
         cursor_theme_name = "Catppuccin-Mocha-Dark-Cursors";
-        font_name = "FiraCode Nerd Font 17";
+        font_name = "CaskaydiaCove Nerd Font 17";
         theme_name = "Catppuccin-Mocha-Standard-Teal-Dark";  
       };
     };

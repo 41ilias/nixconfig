@@ -49,8 +49,6 @@
     dconf.enable = true;
   };
   
-  sound.enable = true;
-
   hardware = {
     opengl.enable = true;
   };
@@ -73,7 +71,7 @@
     mplus-outline-fonts.githubRelease
     dina-font
     proggyfonts
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+    nerd-fonts.fira-code
   ];
 
   system.stateVersion = "23.05"; # Did you read the comment?

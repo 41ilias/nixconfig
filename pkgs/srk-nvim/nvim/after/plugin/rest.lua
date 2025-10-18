@@ -1,44 +1,52 @@
--- local ok, rest = pcall(require, 'rest-nvim')
--- if not ok then
---   return
--- end
---
--- rest.setup({
---   -- Open request results in a horizontal split
---   result_split_horizontal = false,
---   -- Keep the http file buffer above|left when split horizontal|vertical
---   result_split_in_place = true,
---   -- Skip SSL verification, useful for unknown certificates
---   skip_ssl_verification = true,
---   -- Encode URL before making request
---   encode_url = true,
---   -- Highlight request on run
---   highlight = {
---     enabled = true,
---     timeout = 150,
---   },
---   result = {
---     -- toggle showing URL, HTTP info, headers at top the of result window
---     show_url = false,
---     show_http_info = false,
---     show_headers = false,
---     -- executables or functions for formatting response body [optional]
---     -- set them to false if you want to disable them
---     formatters = {
---       json = "jq",
---       html = function(body)
---         return vim.fn.system({ "tidy", "-i", "-q", "-" }, body)
---       end
---     },
---   },
---   -- Jump to request line on run
---   jump_to_request = false,
---   env_file = '.env',
---   custom_dynamic_variables = {},
---   yank_dry_run = true,
--- })
+local ok, rest = pcall(require, 'rest-nvim')
+if not ok then
+  return
+end
+
+vim.filetype.add({
+  extension = {
+    http = 'http'
+  }
+})
+
+rest.setup({
+  -- Open request results in a horizontal split
+  result_split_horizontal = false,
+  -- Keep the http file buffer above|left when split horizontal|vertical
+  result_split_in_place = true,
+  -- Skip SSL verification, useful for unknown certificates
+  skip_ssl_verification = true,
+  -- Encode URL before making request
+  encode_url = true,
+  -- Highlight request on run
+  highlight = {
+    enabled = true,
+    timeout = 150,
+  },
+  result = {
+    -- toggle showing URL, HTTP info, headers at top the of result window
+    show_url = false,
+    show_http_info = false,
+    show_headers = false,
+    -- executables or functions for formatting response body [optional]
+    -- set them to false if you want to disable them
+    formatters = {
+      json = "jq",
+      html = function(body)
+        return vim.fn.system({ "tidy", "-i", "-q", "-" }, body)
+      end
+    },
+  },
+  -- Jump to request line on run
+  jump_to_request = false,
+  env_file = '.env',
+  custom_dynamic_variables = {},
+  yank_dry_run = true,
+})
 --
 --
 -- vim.keymap.set('n', '<leader>rr', rest.run, { desc = 'rest: [r]un [r]equest' })
 -- vim.keymap.set('n', '<leader>rl', rest.last, { desc = 'rest: [r]un [l]ast request' })
 -- vim.keymap.set('n', '<leader>rp', function() rest.run(true) end, { desc = 'rest: [r]un [p]review curl request' })
+vim.keymap.set('n', '<leader>rr', "<cmd>Rest run<cr>", { desc = 'rest: [r]un [r]equest' })
+vim.keymap.set('n', '<leader>rl', "<cmd>Rest run last<cr>", { desc = 'rest: [r]un [l]ast request' })

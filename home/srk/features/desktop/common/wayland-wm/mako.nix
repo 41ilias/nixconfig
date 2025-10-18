@@ -2,15 +2,17 @@
 {
   services.mako = {
     enable = true;
-    iconPath = "${config.gtk.iconTheme.package}/share/icons/Papirus-Dark";
-    backgroundColor = "#1E1E2EFF";
-    borderColor = "#94e2d5FF";
-    borderRadius = 15;
-    borderSize = 2;
-    textColor = "#b4befeFF";
-    defaultTimeout = 10000;
-    font = "FiraCode Nerd Font 15";
-    layer = "overlay";
-    padding = "15";
+    settings = {
+      default-timeout = 10000;
+      icon-path = "${config.gtk.iconTheme.package}/share/icons/Papirus-Dark";
+      border-radius = 15;
+      border-color = "#94e2d5FF";
+      border-size = 2;
+      padding = "15";
+      text-color = "#b4befeFF";
+      background-color = "#1E1E2EFF";
+      font = "CaskaydiaCove Nerd Font";
+      layer = "overlay";
+    };
   };
 }

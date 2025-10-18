@@ -252,8 +252,8 @@ in
       @define-color rosewater #f5e0dc;
       
       * {
-          font-family: 'FiraCode Nerd Font';
-          font-size: 15px;
+          font-family: 'CaskaydiaCove Nerd Font';
+          font-size: 17px;
           font-weight: bold;
           border: none;
           border-radius: 0px;
@@ -289,7 +289,7 @@ in
           padding: 0px 1px;
           border-radius: 15px;
           border: 0px;
-          font-size: 23px;
+          font-size: 26px;
           font-weight: bold;
           font-style: normal;
           opacity: 0.8;
@@ -301,7 +301,7 @@ in
           color: @teal;
       
           padding: 2px 5px 0px 5px;
-          font-size: 23px;
+          font-size: 25px;
           margin: 4px 3px;
           border-radius: 15px;
           border: 0px;
@@ -313,7 +313,7 @@ in
           background: @sky;
           color: @base;
       
-          font-size: 23px;
+          font-size: 25px;
           border-radius: 15px;
           opacity:0.7;
       }
@@ -322,7 +322,7 @@ in
           background: @teal;
           color: @base;
       
-          font-size: 23px;
+          font-size: 25px;
           border-radius: 15px;
           min-width: 40px;
           transition: all 0.3s ease-in-out;
@@ -340,7 +340,7 @@ in
       }
       
       tooltip label {
-          font-size: 19px;
+          font-size: 21px;
           font-weight: normal;
           color: @text;
           margin: 15px 15px 5px 15px;
@@ -352,7 +352,7 @@ in
       #custom-system {
           background-color: @blue;
           color: @crust;
-          font-size: 25px;
+          font-size: 27px;
           font-weight: bold;
           margin-right:15px;
           border-radius: 15px;

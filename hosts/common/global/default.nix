@@ -7,7 +7,8 @@
     ./zsh.nix
     ./openssh.nix
     ./sops.nix
-    ./tailscale.nix
+    # ./wireguard.nix
+    ./pki.nix
   ];
 
   home-manager.extraSpecialArgs = { inherit inputs outputs; };

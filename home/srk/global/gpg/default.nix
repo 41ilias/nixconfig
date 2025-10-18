@@ -55,7 +55,7 @@
     sshKeys = [ "149F16412997785363112F3DBD713BC91D51B831" ];
     defaultCacheTtl = 60;
     maxCacheTtl = 120;
-    pinentryPackage =
+    pinentry.package =
       if config.gtk.enable
       then pkgs.pinentry-gnome3
       else pkgs.pinentry-tty;

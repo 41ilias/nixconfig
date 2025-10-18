@@ -5,7 +5,7 @@
     ./kitty.nix
     ./waybar.nix
     ./wofi.nix
-    ./wpaperd.nix
+    # ./wpaperd.nix
     ./imv.nix
     ./mako.nix
     ./cliphist.nix
@@ -46,6 +46,7 @@
     LIBSEAT_BACKEND = "logind";
     NIXOS_OZONE_WL = "1";
     KEYID = "0x81183E9449CCADDF";
+    CONFIG = "$HOME/nixconfig";
   };
 
   systemd.user.sessionVariables = {

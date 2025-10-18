@@ -11,18 +11,23 @@
 
       # LSP / CMP
       nvim-lspconfig
+      neodev-nvim
       nvim-cmp
       cmp-nvim-lsp
       vim-vsnip
       cmp-vsnip
-
-      # efm pre-configured for formatters and linters
-      efmls-configs-nvim
+      # Formatter
+      conform-nvim
+      # Lintter
+      nvim-lint
 
       # Telescope
       plenary-nvim
       telescope-nvim
       telescope-fzf-native-nvim
+      telescope-ui-select-nvim
+      telescope-manix
+      telescope-undo-nvim
 
       # Treesitter   
       nvim-treesitter.withAllGrammars
@@ -48,16 +53,17 @@
       }
 
       rest-nvim
-      nvim-treesitter-parsers.http
+      # kulala-nvim
 
       # Visuals
       nui-nvim
-      # vimPlugins.nvim-web-devicons
-      # vimPlugins.noice-nvim
-      # vimPlugins.nvim-notify
-      # vimPlugins.lualine-nvim
-      # vimPlugins.indent-blankline-nvim
-      # vimPlugins.lspkind-nvim
+      todo-comments-nvim
+      nvim-web-devicons
+      noice-nvim
+      nvim-notify
+      lualine-nvim
+      indent-blankline-nvim
+      lspkind-nvim
 
       # I built my lua config as a plugin go -> pkgs/srk-nvim
       # TODO: startup time around 150ms can we improve it?
@@ -71,6 +77,15 @@
       EOF
     '';
 
+    extraLuaPackages =  ps: [
+      # rest-nvim dependencies
+      ps.luarocks
+      ps.lua-curl
+      ps.xml2lua
+      ps.mimetypes
+      ps.nvim-nio
+    ];
+
     extraPackages = with pkgs; [
       # Nix LSP and Formatter
       nil
@@ -78,38 +93,39 @@
       nixpkgs-fmt
       # nixfmt
 
-      nodejs
+      # rest-nvim dependencies
+      lua51Packages.luarocks
+      # TODO: Find a way to remove this from here (move to nix develop lua project)
+      lua-language-server
+      stylua
 
       # language servers
       # lua-language-server
-      efm-langserver
       # nodePackages."bash-language-server"
       # nodePackages."dockerfile-language-server-nodejs"
-      nodePackages."pyright"
-      nodePackages."typescript-language-server"
+      # nodePackages."pyright"
+      # nodePackages."typescript-language-server"
       # HTML CSS JSON ESLint
       # nodePackages."vscode-langservers-extracted"
       # nodePackages."yaml-language-server"
-      # GO LSP
-      # gopls
 
       # formatters/Linters
       # nixpkgs-fmt
       # gofumpt
-      python311Packages.flake8
-      python311Packages.black
+      # python311Packages.flake8
+      # python311Packages.black
 
       # tools
       # fd
-      gcc
+      # gcc
       # ghc
       # lazydocker
-      yarn
+      # yarn
 
-      ltex-ls
+      # ltex-ls
 
-      terraform-ls
-      prettierd
+      # terraform-ls
+      # prettierd
     ];
   };
 }

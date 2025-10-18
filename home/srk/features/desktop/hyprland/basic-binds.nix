@@ -29,7 +29,7 @@
         slurp = "${pkgs.slurp}/bin/slurp";
         swappy = "${pkgs.swappy}/bin/swappy";
         convert = "${pkgs.imagemagick}/bin/convert";
-        wofi-rbw = "${pkgs.rofi-rbw}/bin/rofi-rbw";
+        rofi-rbw = "${pkgs.rofi-rbw-wayland}/bin/rofi-rbw";
         swaylock = "${config.programs.swaylock.package}/bin/swaylock";
 
         ws = key: "SUPER, ${key}, workspace, ${key}";
@@ -75,14 +75,16 @@
         "SUPER,s,togglespecialworkspace"
         "SUPERSHIFT,s,movetoworkspacesilent,special"
 
-        "SUPER, O, toggleopaque"
+        # "SUPER, O, toggleopaque"
+        "SUPER,   U, exec, ${rofi-rbw} --prompt \"  Vaultwarden   \" --selector-args=\"--width 30% --height 20%\""
         # "SUPER, P, togglesplit"
 
-        "SUPER, COMMA, focusmonitor, +1"
-        "SUPERSHIFT, COMMA, movecurrentworkspacetomonitor, +1"
+        # "SUPER, COMMA, focusmonitor, +1"
+        # "SUPERSHIFT, COMMA, movecurrentworkspacetomonitor, +1"
 
         "SUPER, PERIOD, workspace, name:Mirror"
-        "SUPERSHIFT, PERIOD, exec, ${wl-mirror} eDP-1"
+        "SUPERSHIFT, PERIOD, movetoworkspacesilent, name:Mirror"
+        "SUPERSHIFT, COMMA, exec, ${wl-mirror} eDP-1"
 
         # 0 is workspace 10 (easier this way than using map and workspaces)
         "SUPER, 0, workspace, 10"

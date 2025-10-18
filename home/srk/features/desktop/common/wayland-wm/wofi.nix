@@ -22,7 +22,7 @@
       @define-color bg2 #494d64;
       
        * {
-          font-family: 'FiraCode Nerd Font';
+          font-family: 'CaskaydiaCove Nerd Font';
           font-size: 17;
        }
       

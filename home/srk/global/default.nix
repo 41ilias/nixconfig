@@ -46,11 +46,12 @@
     html-tidy
     trashy # in order to disable rm
     unar
+    zip
     xdg-utils
     mpv
     jellyfin-ffmpeg
     lsof
     netcat-gnu
-    xwaylandvideobridge
+    kdePackages.xwaylandvideobridge
   ];
 }

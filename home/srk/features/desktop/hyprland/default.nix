@@ -9,10 +9,6 @@ in
     ./basic-binds.nix
   ];
 
-  home.packages = with pkgs; [
-    hyprpicker
-  ];
-
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
@@ -20,9 +16,15 @@ in
 
     # plugins = with plugins; [ hyprbars ];
 
+
     settings = {
+
+      env = [
+        "HYPRCURSOR_THEME,rose-pine-hyprcursor"
+        "HYPRCURSOR_SIZE,36"
+      ];
+
       exec-once = [
-        "hyprctl setcursor Catppuccin-Mocha-Dark-Cursors 32"
         "sway-audio-idle-inhibit"
       ];
 
@@ -40,7 +42,7 @@ in
 
       workspace = [
         "name:Mirror, monitor:DP-4,                                             default:true"
-        "name:Docs,   monitor:desc:Samsung Electric Company C27F390 HTQH502177,             , on-created-empty:firefox"
+        "name:Docs,   monitor:desc:Samsung Electric Company C27F390 HTQH502177,             , on-created-empty:firefox, layoutopt:orientation:top"
         "2,           monitor:desc:Samsung Electric Company LU28R55 HNMR202267, default:true, on-created-empty:firefox"
         "3,           monitor:desc:Samsung Electric Company LU28R55 HNMR202267, default:true, on-created-empty:kitty"
       ];
@@ -84,18 +86,18 @@ in
 
       master = {
         mfact = 0.6;
-        new_is_master = false;
+        new_status = "slave";
       };
 
-      windowrule = let
-        f = regex: "float, ^(${regex})$";
-      in [
-		(f "pavucontrol")
-		(f "nm-connection-editor")
-		(f "xdg-desktop-portal")
-		(f "xdg-desktop-portal-gtk")
-		(f "PacketTracer")
-      ];
+  #     windowrule = let
+  #       f = regex: "float, ^(${regex})$";
+  #     in [
+		# (f "pavucontrol")
+		# (f "nm-connection-editor")
+		# (f "xdg-desktop-portal")
+		# (f "xdg-desktop-portal-gtk")
+		# (f "PacketTracer")
+  #     ];
 
       windowrulev2 = [
         "opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$"
@@ -123,10 +125,10 @@ in
         active_opacity = 1;
         inactive_opacity = 0.80;
 
-        drop_shadow = true;
-        shadow_range = 8;
-        shadow_render_power = 2;
-        "col.shadow" = "rgba(00000044)";
+        # drop_shadow = true;
+        # shadow_range = 8;
+        # shadow_render_power = 2;
+        # "col.shadow" = "rgba(00000044)";
 
         dim_inactive = true;
         dim_strength = 0.2;

@@ -24,25 +24,25 @@
       };
       
       font = {
-        size = 13.0;
+        size = 17.0;
 
         normal = {
-          family = "FiraCode Nerd Font";
+          family = "CaskaydiaCove Nerd Font";
           style =  "Regular ";
         };
               
         bold = {
-          family = "FiraCode Nerd Font";
+          family = "CaskaydiaCove Nerd Font";
           style = "Bold";
         };
          
         italic = {
-          family = "FiraCode Nerd Font";
+          family = "CaskaydiaCove Nerd Font";
           style = "Italic";
         };
       
         bold_italic = {
-          family = "FiraCode Nerd Font";
+          family = "CaskaydiaCove Nerd Font";
           style = "Bold Italic";
         };
       };

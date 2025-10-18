@@ -23,6 +23,7 @@
     #   url = "github:hyprwm/contrib";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
+    rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
     
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";

@@ -56,7 +56,7 @@ in
       compinit -C
     '';
 
-    initExtra = ''
+    initContent = ''
       unsetopt BEEP
       setopt GLOB_DOTS
       setopt NOMATCH

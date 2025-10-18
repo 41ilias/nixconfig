@@ -48,8 +48,8 @@ in
         position = "left";
       };
       fonts = {
-        default_family =  "FiraCode Nerd Font";
-        default_size = "13pt";
+        default_family =  "CaskaydiaCove Nerd Font";
+        default_size = "17pt";
       };
       colors = {
         webpage = {

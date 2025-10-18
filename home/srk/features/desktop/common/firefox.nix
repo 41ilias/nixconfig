@@ -11,9 +11,9 @@
     ];
     profiles.srk = {
       # Here misterio77 is able to just use pkgs.inputs.firefox-addons
-      extensions =  with inputs.firefox-addons.packages."x86_64-linux"; [
+      extensions.packages =  with inputs.firefox-addons.packages."x86_64-linux"; [
         bitwarden
-	    ublock-origin
+	ublock-origin
         darkreader
         youtube-shorts-block
 

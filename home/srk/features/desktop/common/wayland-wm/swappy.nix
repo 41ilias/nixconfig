@@ -12,7 +12,7 @@
     show_panel=true
     line_size=5
     text_size=20
-    text_font=FiraCode Nerd Font
+    text_font=CaskaydiaCove Nerd Font
     paint_mode=blur
     early_exit=true
     fill_shape=false

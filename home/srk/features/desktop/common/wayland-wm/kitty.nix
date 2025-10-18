@@ -16,8 +16,9 @@ in
   programs.kitty = {
     enable = true;
     font = {
-      name = "FiraCode Nerd Font";
-      size = 13;
+      # name = "Fira Code Nerd Font";
+      name = "CaskaydiaCove Nerd Font";
+      size = 17;
     };
 
     settings = {

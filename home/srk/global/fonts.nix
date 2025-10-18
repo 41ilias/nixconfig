@@ -6,6 +6,7 @@
     fira
     fira-code
     fira-code-symbols
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+    nerd-fonts.caskaydia-cove
+    nerd-fonts.caskaydia-mono
   ];
 }

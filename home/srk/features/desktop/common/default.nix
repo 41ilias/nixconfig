@@ -8,7 +8,7 @@
   ];
 
   home.packages = with pkgs; [
-    cinnamon.nemo
+    nemo
     google-chrome
     pavucontrol
     webcord-vencord
@@ -17,25 +17,34 @@
     libsForQt5.lightly
     qt6Packages.qt6ct
     (catppuccin-kvantum.override {
-      accent = "Teal";
-      variant = "Mocha";
+      accent = "teal";
+      variant = "mocha";
     })
 
+    marp-cli
     obsidian
     remmina
+    onlyoffice-bin
+    httpie-desktop
 
     #---
-    gns3-gui
-    gns3-server
-    ciscoPacketTracer8
+    ledger-live-desktop
+    ledger-udev-rules
+
+    teams-for-linux
+
+    #---
+    # gns3-gui
+    # gns3-server
+    # ciscoPacketTracer8
   ];
 
   gtk = {
     enable = true;
 
     font = {
-      name = "Fira Sans";
-      size = 13;
+      name = "CaskaydiaCove Nerd Font";
+      size = 17;
     };
 
     iconTheme = {
@@ -47,20 +56,31 @@
     };
 
     theme = {
-      name = "Catppuccin-Mocha-Standard-Teal-Dark";
-      package = pkgs.catppuccin-gtk.override {
-        accents = [ "teal" ];
-        size = "standard";
-        tweaks = [ "rimless" ];
-        variant = "mocha";
-      };
+      name = "catppuccin-mocha-blue-compact+default";
+      package =
+        (pkgs.catppuccin-gtk.overrideAttrs {
+          src = pkgs.fetchFromGitHub {
+            owner = "catppuccin";
+            repo = "gtk";
+            rev = "v1.0.3";
+            fetchSubmodules = true;
+            hash = "sha256-q5/VcFsm3vNEw55zq/vcM11eo456SYE5TQA3g2VQjGc=";
+          };
+
+          postUnpack = "";
+        }).override
+          {
+            accents = [ "blue" ];
+            variant = "mocha";
+            size = "compact";
+          };
     };
 
-    cursorTheme = {
-      name = "Catppuccin-Mocha-Dark-Cursors";
-      package = pkgs.catppuccin-cursors.mochaDark;
-      size = 32;
-    };
+    # cursorTheme = {
+    #   name = "Catppuccin-Mocha-Dark-Cursors";
+    #   package = pkgs.catppuccin-cursors.mochaDark;
+    #   size = 32;
+    # };
 
     gtk3.extraConfig = {
       Settings = ''
@@ -75,15 +95,11 @@
     };
   };
 
-  home.pointerCursor = {
-    name = "Catppuccin-Mocha-Dark-Cursors";
-    package = pkgs.catppuccin-cursors.mochaDark;
-    size = 32;
-  };
-
-  home.sessionVariables = {
-    GTK_THEME = "Catppuccin-Mocha-Standard-Teal-Dark";
-  };
+  # home.pointerCursor = {
+  #   name = "Catppuccin-Mocha-Dark-Cursors";
+  #   package = pkgs.catppuccin-cursors.mochaDark;
+  #   size = 32;
+  # };
 
   qt = {
     enable = true;

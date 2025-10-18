@@ -29,6 +29,9 @@ map('x', '<leader>p', '\"_dP', { desc = 'Paste over selection without loosing it
 map("v", "K", ":m '<-2<CR>gv=gv", { desc = 'move up visual selection'})
 map("v", "J", ":m '>+1<CR>gv=gv", { desc = 'move down visual selection'})
 
+map("v", ">", ">gv", { desc = 'stay in visual mode when indenting right'})
+map("v", "<", "<gv", { desc = 'stay in visual mode when indenting left'})
+
 map("n", "<C-j>", "<cmd>cnext<CR>zz", { desc = "move down in quickfix list"} )
 map("n", "<C-k>", "<cmd>cprev<CR>zz", { desc = "move up in quickfix list"} )
 

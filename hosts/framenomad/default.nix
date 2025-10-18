@@ -14,7 +14,6 @@
       ../common/global
       ../common/users/srk
       ../common/optional/pipewire.nix
-      ../common/optional/greetd.nix
       ../common/optional/docker.nix
       ../common/optional/hyprland.nix
       ../common/optional/keyd.nix
@@ -22,6 +21,7 @@
       ../common/optional/desktop.nix
       ../common/optional/smbshares.nix
       ../common/optional/printer.nix
+      # ../common/optional/openvpn.nix
     ];
 
   # Bootloader.
@@ -36,7 +36,7 @@
   hardware.bluetooth = {
     enable = true;
     package = pkgs.bluez;
-    powerOnBoot = false;
+    powerOnBoot = true;
   };
 
   programs.light.enable = true;
@@ -44,16 +44,6 @@
   networking = {
     hostName = "framenomad";
     firewall.enable = false;
-    extraHosts = ''
-      127.0.0.1 host.docker.internal
-      127.0.0.1 t3app.local
-      10.0.0.8  vimsnap.local
-      10.0.0.150 janus
-      10.0.0.141 dugalle
-      10.0.0.142 dugalle2
-      10.0.0.143 raynor
-      10.0.0.144 duke
-    '';
   };
 
   xdg.mime = {
@@ -70,6 +60,10 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+
+  networking.extraHosts =
+  ''
+  '';
 
   # Configure keymap in X11
   services.xserver = {
@@ -99,17 +93,17 @@
     v4l-utils
     libvdpau
     ddcutil
-    openssl_3_2
+    openssl
 
     scrcpy
   ];
 
-  # services.softether = {
-  #   enable = true;
-  #   vpnclient = {
-  #     enable = true;
-  #   };
-  # };
+  services.softether = {
+    enable = true;
+    vpnclient = {
+      enable = true;
+    };
+  };
 
   services.pcscd.enable = true;
 

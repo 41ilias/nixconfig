@@ -23,5 +23,6 @@
     poppler_utils
     git-crypt
     file
+    air
   ];
 }

@@ -29,6 +29,7 @@ in
 
     shellAliases = {
       bat = "bat --theme mocha";
+      ssha = "gpgconf --kill gpg-agent && eval $(ssh-agent -c) && ssh-add ~/.ssh/ansible_bootstrap";
     };
 
     interactiveShellInit =

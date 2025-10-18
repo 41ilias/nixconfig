@@ -12,7 +12,7 @@ in
 
       screenshots = true;
 
-      font = "FiraCode Nerd Font";
+      font = "Iosevka Nerd Font";
       font-size = 70;
 
       clock = true;

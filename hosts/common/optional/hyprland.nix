@@ -18,6 +18,10 @@
     polkit.enable = true;
   };
 
+  environment.systemPackages = [
+    inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
+  ];
+
   systemd = {
     user.services.polkit-gnome-authentication-agent-1 = {
       description = "polkit-gnome-authentication-agent-1";

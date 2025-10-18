@@ -38,22 +38,20 @@
 
   # networking.interfaces.vpn_hena = {
   #   useDHCP = true;
-  #   # ipv4.routes = [
-  #   #   {
-  #   #     address = "10.101.150.0";
-  #   #     prefixLength = 24;
-  #   #     via = "192.168.33.1";
-  #   #   }
-  #   # ];
+  #   ipv4.routes = [
+  #     {
+  #       address = "10.101.150.0";
+  #       prefixLength = 24;
+  #       via = "192.168.33.1";
+  #     }
+  #   ];
   # };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   hardware.sensor.iio.enable = true;
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
     extraPackages = with pkgs; [ mesa libva ];
   };
 
